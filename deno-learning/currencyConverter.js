@@ -4,7 +4,7 @@
  * Converts your USD to Swiss Francs
  */
 function currencyConvert(number) {
-  let USD = Number(number)
+  const USD = Number(number)
   return USD*0.87
 }
 
