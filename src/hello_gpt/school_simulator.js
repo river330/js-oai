@@ -31,7 +31,7 @@ async function main() {
   say(`Time to WAKE UP!`);
 
   let turns = 0;
-  while (playing && turns++ < 10) {
+  while (playing) {
     const command = await ask("What do you want to do?");
     if (command == "quit") {
       playing = false;
@@ -52,8 +52,8 @@ async function main() {
   The game starts with the student waking up. If their speed is less than 6 than they wake up late, if their speed is greater than or equal to 6, they wake up to their alarm.
 
   The speed affects how quickly the player makes their actions, the quicker they are, the better they are. They are more likely not miss trains or other time-based obstacles.
-
   The knowledge affects how prepared the player is, they are less likely to forget things like their homework and can make up obstacles that were affected by their slow speed.
+  Be sure to provide events that are affected by the player's speed or knowledge.
  
   Recently: ${context.slice(-3).join(" ")}
 
@@ -74,9 +74,16 @@ async function main() {
     });
     context.push(response);
     say(`${response}\n`);
-    if (turns === 5) event = "add an obstacle setback to the scene";
-    if (turns === 11) {
+    turns++;
+    if (turns === 4) {
+      event =
+        "add an obstacle that makes it harder and progresses the player backwards";
+    }
+    if (turns === 6) {
       event = "provide an exit game description on how the player did";
+    }
+    if (turns === 7) {
+      playing = false;
     }
   }
 }
