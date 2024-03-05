@@ -6,21 +6,33 @@ import { ask, say } from "../shared/cli.js";
 import { makeImage } from "../shared/openai.js";
 import { gptPrompt } from "../shared/openai.js";
 
+import chalk from "npm:chalk@5";
+import boxen from "npm:boxen@7.1.1";
+import figlet from "npm:figlet";
+
 main();
 
 async function main() {
-  say("Let's make a playlist!");
+  //figlet header
+  say(
+    chalk.hex(`#1DB954`).bold(figlet.textSync("VIBELIST", {})),
+  );
+  say(chalk.underline("\nLet's make a playlist!"));
   say("");
 
   //figuring out the vibe the user wants for their playlist
-  const vibe = ask("What vibe are you looking for?");
+  const vibe = ask(chalk.hex(`#1DB954`).bold("What vibe are you looking for?"));
   //sets a goal on the run time will be for the playlist
   const length = ask(
-    "Roughly how long of a playlist would you like (in minutes)",
+    chalk.hex(`#1DB954`).bold(
+      "Roughly how long of a playlist would you like (in minutes)",
+    ),
   );
 
   //allows users to input their own songs into the playlist, helps with curation
-  const songs = ask("Do you have songs you know you want in it?");
+  const songs = ask(
+    chalk.hex(`#1DB954`).bold("Do you have songs you know you want in it?"),
+  );
 
   //prompt to generate playlist songs
   const songPrompt = `
@@ -35,20 +47,37 @@ async function main() {
 
     Be brief in your response, and only provide the list of songs.
 
-    For example:
-    For a 'Girly Pop' playlist that is 20 minutes, I recommend:
-    1. Song Title by Song Artist (Length)
+    For example (Follow strictly):
+    "1. Song Title by Song Artist (Length)
     2. Song Title by Song Artist (Length)
     3. Song Title by Song Artist (Length)
+
+    Total playlist time:"
+
+    DO NOT ADD A NOTE SECTION IF PLAYLIST TIME ISN'T EXACT,
   `;
 
   //gets playlist song results
   const result = await gptPrompt(songPrompt, {
     temperature: 0.5,
-    max_tokens: 300,
+    max_tokens: 500,
   });
 
-  say(`\n${result}`);
+  //spits out playlist songs
+  say("");
+  say(boxen(
+    chalk.underline(
+      `For a ` + chalk.hex(`#1DB954`).bold(vibe) + ` playlist that is ` +
+        chalk.hex(`#1DB954`).bold(length) +
+        ` minutes:\n`,
+    ) + result,
+    {
+      padding: 1,
+      margin: 0.5,
+      borderStyle: "round",
+      title: chalk.hex(`#1DB954`).bold("Your Playlist"),
+    },
+  ));
   say("");
 
   //prompt to generate title options for the new playlist
@@ -60,11 +89,9 @@ async function main() {
     Have the title be short and brief, and quirky and funny, maybe use a pun?
 
     Respond in the following format —
-    Here are three potential titles for your new playlist:
     1.
     2.
     3.
-    ...
   `;
 
   //gets playlist titles
@@ -95,7 +122,18 @@ async function main() {
   const generatedCover = await makeImage(cover, {});
 
   //spits out title and cover
-  say(`\n${titleOptions}`);
-  say(`\n${generatedCover}`);
+  say("");
+  say(boxen(titleOptions, {
+    padding: 1,
+    margin: 0.5,
+    borderStyle: "round",
+    title: chalk.hex(`#1DB954`).bold("Potential Playlist Titles"),
+  }));
+  say(boxen(generatedCover, {
+    padding: 1,
+    margin: 0.5,
+    borderStyle: "round",
+    title: chalk.hex(`#1DB954`).bold("Your Cover"),
+  }));
   say("");
 }
