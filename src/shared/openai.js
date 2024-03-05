@@ -143,7 +143,7 @@ export async function makeImage(prompt, c = {}) {
 
   spinner.succeed(chalk.gray(`${config.model} ${seconds}s $${cost}`));
 
-  console.log(chalk.gray(image.data[0].revised_prompt));
+  // console.log(chalk.gray(image.data[0].revised_prompt));
 
   return image.data[0].url;
 }
