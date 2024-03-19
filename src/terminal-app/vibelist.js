@@ -75,6 +75,7 @@ async function main() {
       padding: 1,
       margin: 0.5,
       borderStyle: "round",
+      // width: 100,
       title: chalk.hex(`#1DB954`).bold("Your Playlist"),
     },
   ));
@@ -127,12 +128,14 @@ async function main() {
     padding: 1,
     margin: 0.5,
     borderStyle: "round",
+    // width: 100,
     title: chalk.hex(`#1DB954`).bold("Potential Playlist Titles"),
   }));
   say(boxen(generatedCover, {
     padding: 1,
     margin: 0.5,
     borderStyle: "round",
+    width: 80,
     title: chalk.hex(`#1DB954`).bold("Your Cover"),
   }));
   say("");
