@@ -1,0 +1,29 @@
+body{
+
+}
+
+.random-button{
+    margin: auto;
+}
+
+.face-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.eyes, .nose, .mouth {
+    width: 50%;
+}
+
+img {
+    width:100%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
