@@ -1,0 +1,124 @@
+body{
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: "minion-pro", serif;
+    background-color: black;
+    color: white;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    
+}
+h1 {
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0;
+}
+label {
+    font-size: 1.02rem;
+    margin-left: 10px;
+font-weight: 500;    letter-spacing: 0.03rem;
+}
+textarea{
+    font-family: "minion-pro", serif;
+    font-style: italic;
+    padding: 10px;
+    font-size: 1.02rem;
+}
+select{
+    font-family: "minion-pro", serif;
+    font-style: italic;
+    padding: 10px;
+
+    font-size: 1.02rem;
+
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 30%;
+
+}
+.outputs{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputs div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom:5px;
+}
+#container{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+    margin-top: 10px;
+
+}
+#genImage{
+    width: 50vw;
+}
+
+#original {
+    min-height: 25vh;
+}
+
+button {
+    font-family: "minion-pro";
+    font-size: 1.02rem;
+    padding: 5px;
+    width: fit-content;
+    margin-left: 10px;
+}
+
+#loading {
+    font-style: italic;
+}
+#revision {
+    max-width: 50vw;
+   font-size:  1.2rem;
+}
+#mona {
+    width: 40%;
+}
+#ref{
+    display: flex;
+    flex-direction: row;
+}
+#ref span {
+    display: inline-block;
+   align-self: flex-end;
+    padding-top: 10px;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    letter-spacing: 0.03rem;
+}
+
+#proj {
+    font-size: 1.2rem;
+}
+
+#projDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    justify-content: space-between;
+}
+#projDiv h1 {
+    line-height: 99%;
+    width: 30%;
+}
+#projDiv span {
+    width: fit-content;
+   max-width: 60%;
+   display: inline-block;
+   align-self: flex-end;
+}
