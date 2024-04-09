@@ -15,8 +15,11 @@ h1 {
 }
 label {
     font-size: 1.02rem;
-    margin-left: 10px;
-font-weight: 500;    letter-spacing: 0.03rem;
+    margin-left: 20px;
+font-weight: 500;    
+letter-spacing: 0.03rem;
+margin-bottom:5px;
+
 }
 textarea{
     font-family: "minion-pro", serif;
@@ -51,9 +54,6 @@ select{
     flex-direction: column;
 }
 
-label {
-    margin-bottom:5px;
-}
 #container{
     display: flex;
     flex-direction: row;
@@ -63,7 +63,7 @@ label {
 
 }
 #genImage{
-    width: 50vw;
+    width: 20vw;
 }
 
 #original {
@@ -75,11 +75,12 @@ button {
     font-size: 1.02rem;
     padding: 5px;
     width: fit-content;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
 #loading {
     font-style: italic;
+    text-align: right;
 }
 #revision {
     max-width: 50vw;

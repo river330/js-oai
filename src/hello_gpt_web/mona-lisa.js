@@ -13,6 +13,7 @@ const router = new Router();
 
 // API routes
 router.get("/api/gpt", async (ctx) => {
+  console.log("Received request for /api/gpt");
   const prompt = ctx.request.url.searchParams.get("prompt");
   console.log(prompt);
   const result = await gptPrompt(prompt, { max_tokens: 1024 });
@@ -23,7 +24,7 @@ router.get("/api/gpt", async (ctx) => {
 router.get("/api/dalle", async (ctx) => {
   console.log("Received request for /api/dalle");
   const prompt = ctx.request.url.searchParams.get("prompt");
-  console.log("Prompt:", prompt);
+  console.log("Image Prompt:", prompt);
   const result = await makeImage(prompt);
   ctx.response.body = result;
 });
@@ -32,6 +33,6 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(staticServer);
 
-console.log("Listening on http://localhost:8000");
+console.log("\nListening on http://localhost:8000");
 
 await app.listen({ port: 8000, signal: createExitSignal() });
