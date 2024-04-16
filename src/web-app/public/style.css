@@ -1,5 +1,30 @@
 
+body {
+    font-family: sans-serif;
+}
 .hierarchy {
     display: flex;
     flex-direction: column;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    position:absolute;
+    top: 0px;
+    z-index: -999;
+}
+.inputArea {
+    z-index: 999;
+}
+
+#headline {
+    font-size: 24px;
+}
+
+#subhead {
+    font-size: 20px;
+}
+#body {
+    font-size: 16px;
 }

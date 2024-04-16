@@ -10,10 +10,9 @@ export async function vibeTypeset(context) {
     };
     return;
   }
-
   const result = await gptPrompt(prompt, { max_tokens: 1024 });
 
-  console.log("Generated response from GPT:", result);
+  console.log("Generated response from GPT:\n", result);
 
   context.response.body = JSON.stringify(result);
   context.response.type = "json";
