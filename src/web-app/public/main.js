@@ -9,30 +9,28 @@ async function onSubmit() {
   console.log(vibe);
   const prompt =
     `You are a designer trying to provide a type hierarchy based on the following vibes: ${vibe}. You will be providing option for a headline, subhead, and body, identifying the typeface, letterspacing, typecase for each one. In addition you will provide a font-size ratio for the three.
-      \n
       When returning your response, make sure to structure it in JSON format and to include the following parameters: Do not include "'''json" in your response:
-      \n
       {
-        "headline": {
-            font-size: 'this should be in reference to the body.font-size, so something like 1.5rem', 
-            typeface: 'helvetica',
-            letterspacing: '0.5px',
-            typecase: 'uppercase',
-            content: 'create a max-three word headline related to the ${vibe}',
+        headline: {
+            "font-size": 'this should be in reference to the body.font-size, so something like 1.5rem', 
+            "typeface": 'helvetica',
+            "letterspacing": '0.5px',
+            "typecase": 'uppercase',
+            "content": 'create a max-three word headline related to the ${vibe}',
         },
-        "subhead": {
-            font-size: 'this should be in reference to the body.font-size, so something like 1.25rem', 
-            typeface: 'helvetica',
-            letterspacing: '0.5px',
-            typecase: 'lowercase'
-            content: 'create a max-sentence long or preferably subhead related to the ${vibe}'
+        subhead: {
+            "font-size": 'this should be in reference to the body.font-size, so something like 1.25rem', 
+            "typeface": 'helvetica',
+            "letterspacing": '0.5px',
+            "typecase": 'lowercase'
+            "content": 'create a max-sentence long or preferably subhead related to the ${vibe}',
         },
-        "body": {
-            font-size: '16px',
-            typeface: 'helvetica',
-            letterspacing: '0.5px',
-            typecase: 'sentence':
-            content: 'create a fake body copy of max 4-sentences for the ${vibe}'
+        body: {
+            "font-size": '16px',
+            "typeface": 'helvetica',
+            "letterspacing": '0.5px',
+            "typecase": 'sentence':
+            "content": 'create a fake body copy of max 4-sentences for the ${vibe}',
         }
       }`;
 
@@ -49,7 +47,7 @@ async function onSubmit() {
     })
     .then((data) => {
       console.log(data);
-      console.log("Headline data:", data["headline"]);
+      console.log("Headline data:", data.headline.typeface);
       updateSpans(data);
     })
     .catch((error) => {
