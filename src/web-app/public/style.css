@@ -1,3 +1,5 @@
-body {
-    background-color: red;
+
+.hierarchy {
+    display: flex;
+    flex-direction: column;
 }

@@ -1,7 +1,11 @@
 console.log("Hello, main.js");
 
 const submit = document.getElementById("submit");
-const vibeInput = document.getElementById("vibeInput"); // Corrected ID
+const vibeInput = document.getElementById("vibeInput");
+
+const headlineSpan = document.getElementById("headline");
+const subheadSpan = document.getElementById("subhead");
+const bodySpan = document.getElementById("body");
 
 async function onSubmit() {
   console.log("submitting");
@@ -34,6 +38,10 @@ async function onSubmit() {
         }
       }`;
 
+  headlineSpan.innerHTML = "loading...";
+  subheadSpan.innerHTML = "loading...";
+  bodySpan.innerHTML = "loading...";
+
   fetch(`/upload`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -52,6 +60,9 @@ async function onSubmit() {
     })
     .catch((error) => {
       console.error("Fetch error:", error);
+      headlineSpan.innerHTML = "failed:(";
+      subheadSpan.innerHTML = "failed:(";
+      bodySpan.innerHTML = "failed:(";
     });
 }
 
