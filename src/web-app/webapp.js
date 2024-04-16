@@ -1,7 +1,7 @@
 import { Application, Router } from "https://deno.land/x/oak@v12.6.1/mod.ts";
 
 import { createExitSignal, staticServer } from "../shared/server.ts";
-import { gptPrompt, makeImage } from "../shared/openai.js";
+import { vibeTypeset } from "./vibeTypesetter.js";
 
 import { Chalk } from "npm:chalk@5";
 const chalk = new Chalk({ level: 1 });
@@ -15,22 +15,8 @@ const app = new Application();
 const router = new Router();
 
 // API routes
-router.get("/api/gpt", async (ctx) => {
-  console.log("Received request for /api/gpt");
-  const prompt = ctx.request.url.searchParams.get("prompt");
-  console.log("Prompt:\n" + prompt);
-  const result = await gptPrompt(prompt, { max_tokens: 1024 });
-  ctx.response.body = result;
-});
 
-// add the DALL•E route
-router.get("/api/dalle", async (ctx) => {
-  console.log("Received request for /api/dalle");
-  const prompt = ctx.request.url.searchParams.get("prompt");
-  console.log("Image Prompt:\n", prompt);
-  const result = await makeImage(prompt);
-  ctx.response.body = result;
-});
+router.post("/upload", vibeTypeset);
 
 app.use(router.routes());
 app.use(router.allowedMethods());
